@@ -12,7 +12,6 @@ open_canvas(800, 600)
 image = load_image('할로우나이트 이밎.webp')
 
 
-
 # 3. 애니메이션 정보 설정 (가산점: 애니메이션별 프레임 수 다름 반영)
 
 animations = [
