@@ -58,8 +58,6 @@ while running:
 
             clear_canvas()
 
-
-
             # 프레임 좌표 계산
 
             left = frame * frame_width
