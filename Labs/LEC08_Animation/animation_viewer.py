@@ -37,7 +37,6 @@ running = True
 anim_index = 0
 
 
-
 while running:
 
     current_anim = animations[anim_index]
