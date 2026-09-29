@@ -50,7 +50,6 @@ while running:
     row = current_anim["row"]
 
 
-
     # 각 애니메이션 5회 반복 재생
 
     for loop in range(5):
