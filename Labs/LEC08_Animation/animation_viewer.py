@@ -72,7 +72,6 @@ while running:
                            center_x, center_y, display_width, display_height)
 
 
-
             update_canvas()
 
             delay(0.08)
