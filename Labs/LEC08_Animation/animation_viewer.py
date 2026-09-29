@@ -68,23 +68,9 @@ while running:
 
             # 중앙에 확대 표시
 
-            image.clip_draw(left, bottom, frame_width, frame_height, 
-
-                           center_x, center_y, display_width, display_height)
-
-
-            update_canvas()
-
-            delay(0.08)
-
-
-            # 창 닫기 이벤트 처리
-
-            events  =  get_events()
-
-            for event in events:
-
-                if event.type == SDL_QUIT:
+            image.clip_draw (left, bottom, frame_width, frame_height, 
+Bash
+git commit -a -m "Feat: 프레임 루프 종료 후 이미지 자원 해제 처리 추가"nt.type == SDL_QUIT:
 
                     running = False
 
@@ -127,4 +113,4 @@ while running:
 
 
 
-close_canvas()
+close_canvas()/
