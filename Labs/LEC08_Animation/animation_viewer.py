@@ -32,7 +32,7 @@ center_x, center_y = 400, 300  # 화면 중앙 좌표
 display_width, display_height = 300, 300  # 확대 출력 크기 (화면 절반 이상)
 
 
-running = True
+running  =  True
 
 anim_index = 0
 
