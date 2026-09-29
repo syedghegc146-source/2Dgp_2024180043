@@ -5,7 +5,6 @@ from pico2d import *
 open_canvas(800, 600)
 
 
-
 # 2. 스프라이트 시트 이미지 로드
 
 # (LEC08 폴더 안에 이미지 파일이 위치해야 함)
