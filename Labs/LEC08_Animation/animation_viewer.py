@@ -50,6 +50,7 @@ while running:
     row = current_anim["row"]
 
 
+
     # 각 애니메이션 5회 반복 재생
 
     for loop in range(5):
@@ -120,9 +121,11 @@ while running:
 
 
 
+
     # 다음 애니메이션으로 순환 (무한 반복)
 
     anim_index = (anim_index + 1) % len(animations)
+
 
 
 
