@@ -34,7 +34,7 @@ display_width, display_height = 300, 300  # 확대 출력 크기 (화면 절반 
 
 running  =  True
 
-anim_index = 0
+anim_index  =  0
 
 
 while running:
