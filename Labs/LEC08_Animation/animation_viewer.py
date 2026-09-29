@@ -78,7 +78,6 @@ while running:
             delay(0.08)
 
 
-
             # 창 닫기 이벤트 처리
 
             events = get_events()
