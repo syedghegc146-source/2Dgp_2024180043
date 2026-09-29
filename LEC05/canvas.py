@@ -22,10 +22,20 @@ def move_circle():
 
 def draw_top():
     print('top')
+    for x in range(100, 700, 2):
+        clear_canvas()
+        character.draw(x, 500)
+        update_canvas()
+        delay(0.01) 
     pass
 
 def draw_bottom():
     print('bottom')
+    for x in range(100, 700, 2):
+        clear_canvas()
+        character.draw(x, 100)
+        update_canvas()
+        delay(0.01)
     pass
 
 def draw_Left():
@@ -34,6 +44,11 @@ def draw_Left():
 
 def draw_Right():
     print('Right')
+    for y in range(100, 500, 2):
+        clear_canvas()
+        character.draw(700, y)
+        update_canvas()
+        delay(0.01)
     pass
 
 def move_rectangle():
