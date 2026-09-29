@@ -57,7 +57,7 @@ while running:
         if not running:
             break
  
-    if not running:
+    if not running: 
         break
  
     # 5회 반복 완료 후 1초간 정지 (마지막 프레임 유지)
