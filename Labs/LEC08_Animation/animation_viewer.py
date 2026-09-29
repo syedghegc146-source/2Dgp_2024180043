@@ -9,7 +9,7 @@ open_canvas(800, 600)
 
 # (LEC08 폴더 안에 이미지 파일이 위치해야 함)
 
-image = load_image('할로우나이트 이밎.webp')
+image  =  load_image('할로우나이트 이밎.webp')
 
 
 # 3. 애니메이션 정보 설정 (가산점: 애니메이션별 프레임 수 다름 반영)
@@ -103,7 +103,6 @@ while running:
     if not running:
 
         break
-
 
 
     # 5회 반복 완료 후 1초간 정지 (마지막 프레임 유지)
