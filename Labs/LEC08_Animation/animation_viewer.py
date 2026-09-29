@@ -65,7 +65,6 @@ while running:
             bottom = image.height - ((row + 1) * frame_height)
 
 
-
             # 중앙에 확대 표시
 
             image.clip_draw(left, bottom, frame_width, frame_height, 
