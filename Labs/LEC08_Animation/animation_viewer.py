@@ -1,7 +1,5 @@
 from pico2d import *
 
-
-
 # 1. 화면 창 생성 (800x600)
 
 open_canvas(800, 600)
