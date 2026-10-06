@@ -18,6 +18,13 @@ class MovementInputTests(unittest.TestCase):
         self.assertEqual(game.movement_vector({game.SDLK_UP}), (0, 1))
         self.assertEqual(game.movement_vector({game.SDLK_DOWN}), (0, -1))
 
+    def test_opposite_keys_cancel_each_axis(self):
+        horizontal = game.movement_vector({game.SDLK_LEFT, game.SDLK_RIGHT})
+        vertical = game.movement_vector({game.SDLK_UP, game.SDLK_DOWN})
+
+        self.assertEqual(horizontal, (0, 0))
+        self.assertEqual(vertical, (0, 0))
+
 
 if __name__ == '__main__':
     unittest.main()
