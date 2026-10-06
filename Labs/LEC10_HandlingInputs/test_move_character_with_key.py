@@ -37,6 +37,11 @@ class MovementPositionTests(unittest.TestCase):
 
         self.assertEqual((x, y), (750, 500))
 
+    def test_left_movement_uses_elapsed_time(self):
+        x, y = game.move_character(600, 500, -1, 0, 0.5)
+
+        self.assertEqual((x, y), (450, 500))
+
 
 if __name__ == '__main__':
     unittest.main()
