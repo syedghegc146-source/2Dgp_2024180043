@@ -31,5 +31,12 @@ class MovementInputTests(unittest.TestCase):
         self.assertAlmostEqual(move_x * move_x + move_y * move_y, 1.0)
 
 
+class MovementPositionTests(unittest.TestCase):
+    def test_right_movement_uses_elapsed_time(self):
+        x, y = game.move_character(600, 500, 1, 0, 0.5)
+
+        self.assertEqual((x, y), (750, 500))
+
+
 if __name__ == '__main__':
     unittest.main()
