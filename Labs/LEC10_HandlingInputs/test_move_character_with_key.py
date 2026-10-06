@@ -40,6 +40,15 @@ class MovementInputTests(unittest.TestCase):
         _, facing = game.handle_events([right], set(), facing)
         self.assertEqual(facing, 'right')
 
+    def test_vertical_keydown_preserves_facing(self):
+        up = SimpleNamespace(type=game.SDL_KEYDOWN, key=game.SDLK_UP)
+        down = SimpleNamespace(type=game.SDL_KEYDOWN, key=game.SDLK_DOWN)
+
+        _, facing = game.handle_events([up], set(), 'left')
+        self.assertEqual(facing, 'left')
+        _, facing = game.handle_events([down], set(), facing)
+        self.assertEqual(facing, 'left')
+
 
 class MovementPositionTests(unittest.TestCase):
     def test_right_movement_uses_elapsed_time(self):
