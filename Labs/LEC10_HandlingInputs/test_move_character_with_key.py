@@ -10,6 +10,10 @@ class MovementInputTests(unittest.TestCase):
         self.assertEqual((move_x, move_y), (0, 0))
         self.assertEqual(game.animation_row(False, 'right'), 300)
 
+    def test_horizontal_arrow_keys_set_horizontal_direction(self):
+        self.assertEqual(game.movement_vector({game.SDLK_RIGHT}), (1, 0))
+        self.assertEqual(game.movement_vector({game.SDLK_LEFT}), (-1, 0))
+
 
 if __name__ == '__main__':
     unittest.main()
