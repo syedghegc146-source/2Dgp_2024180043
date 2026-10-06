@@ -25,6 +25,11 @@ class MovementInputTests(unittest.TestCase):
         self.assertEqual(horizontal, (0, 0))
         self.assertEqual(vertical, (0, 0))
 
+    def test_diagonal_speed_is_normalized(self):
+        move_x, move_y = game.movement_vector({game.SDLK_RIGHT, game.SDLK_UP})
+
+        self.assertAlmostEqual(move_x * move_x + move_y * move_y, 1.0)
+
 
 if __name__ == '__main__':
     unittest.main()
