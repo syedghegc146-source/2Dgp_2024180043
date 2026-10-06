@@ -42,6 +42,13 @@ class MovementPositionTests(unittest.TestCase):
 
         self.assertEqual((x, y), (450, 500))
 
+    def test_vertical_movement_uses_elapsed_time(self):
+        upward = game.move_character(600, 500, 0, 1, 0.5)
+        downward = game.move_character(600, 500, 0, -1, 0.5)
+
+        self.assertEqual(upward, (600, 650))
+        self.assertEqual(downward, (600, 350))
+
 
 if __name__ == '__main__':
     unittest.main()
