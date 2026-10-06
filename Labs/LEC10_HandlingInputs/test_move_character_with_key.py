@@ -49,6 +49,11 @@ class MovementPositionTests(unittest.TestCase):
         self.assertEqual(upward, (600, 650))
         self.assertEqual(downward, (600, 350))
 
+    def test_left_screen_boundary_clamps_character(self):
+        x, y = game.move_character(50, 500, -1, 0, 1.0)
+
+        self.assertEqual((x, y), (50, 500))
+
 
 if __name__ == '__main__':
     unittest.main()
