@@ -71,22 +71,27 @@ class MovementPositionTests(unittest.TestCase):
     def test_left_screen_boundary_clamps_character(self):
         x, y = game.move_character(50, 500, -1, 0, 1.0)
 
-        self.assertEqual((x, y), (50, 500))
+        self.assertEqual((x, y), (55, 500))
 
     def test_right_screen_boundary_clamps_character(self):
         x, y = game.move_character(1230, 500, 1, 0, 1.0)
 
-        self.assertEqual((x, y), (1230, 500))
+        self.assertEqual((x, y), (1225, 500))
 
     def test_bottom_screen_boundary_clamps_character(self):
         x, y = game.move_character(600, 50, 0, -1, 1.0)
 
-        self.assertEqual((x, y), (600, 50))
+        self.assertEqual((x, y), (600, 55))
 
     def test_top_screen_boundary_clamps_character(self):
         x, y = game.move_character(600, 974, 0, 1, 1.0)
 
-        self.assertEqual((x, y), (600, 974))
+        self.assertEqual((x, y), (600, 969))
+
+    def test_vertical_boundary_uses_actual_canvas_height(self):
+        x, y = game.move_character(600, 590, 0, 1, 1.0, canvas_height=600)
+
+        self.assertEqual((x, y), (600, 545))
 
 
 class AnimationSelectionTests(unittest.TestCase):
