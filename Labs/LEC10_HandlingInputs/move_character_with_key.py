@@ -10,6 +10,7 @@ FRAME_HEIGHT = 100
 FRAME_COUNT = 8
 FRAME_DURATION = 0.1
 MOVE_SPEED = 300.0
+SCREEN_MARGIN = 5
 
 KEYS = {SDLK_UP, SDLK_DOWN, SDLK_LEFT, SDLK_RIGHT}
 IDLE_ROW = {'right': 300, 'left': 200}
@@ -44,11 +45,18 @@ def movement_vector(pressed_keys):
     return move_x, move_y
 
 
-def move_character(x, y, move_x, move_y, elapsed):
+def move_character(
+    x, y, move_x, move_y, elapsed,
+    canvas_width=TUK_WIDTH, canvas_height=TUK_HEIGHT,
+):
     x += move_x * MOVE_SPEED * elapsed
     y += move_y * MOVE_SPEED * elapsed
-    x = min(max(x, FRAME_WIDTH / 2), TUK_WIDTH - FRAME_WIDTH / 2)
-    y = min(max(y, FRAME_HEIGHT / 2), TUK_HEIGHT - FRAME_HEIGHT / 2)
+    min_x = FRAME_WIDTH / 2 + SCREEN_MARGIN
+    max_x = canvas_width - FRAME_WIDTH / 2 - SCREEN_MARGIN
+    min_y = FRAME_HEIGHT / 2 + SCREEN_MARGIN
+    max_y = canvas_height - FRAME_HEIGHT / 2 - SCREEN_MARGIN
+    x = min(max(x, min_x), max_x)
+    y = min(max(y, min_y), max_y)
     return x, y
 
 
@@ -90,7 +98,10 @@ def main():
 
             move_x, move_y = movement_vector(pressed_keys)
             is_moving = move_x != 0 or move_y != 0
-            x, y = move_character(x, y, move_x, move_y, elapsed)
+            x, y = move_character(
+                x, y, move_x, move_y, elapsed,
+                get_canvas_width(), get_canvas_height(),
+            )
 
             current_animation = ('move' if is_moving else 'idle', facing)
             if current_animation != animation_key:
