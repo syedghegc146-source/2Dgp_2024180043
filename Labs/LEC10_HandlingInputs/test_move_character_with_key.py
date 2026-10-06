@@ -1,4 +1,5 @@
 import unittest
+from types import SimpleNamespace
 
 import move_character_with_key as game
 
@@ -29,6 +30,15 @@ class MovementInputTests(unittest.TestCase):
         move_x, move_y = game.movement_vector({game.SDLK_RIGHT, game.SDLK_UP})
 
         self.assertAlmostEqual(move_x * move_x + move_y * move_y, 1.0)
+
+    def test_horizontal_keydown_updates_facing(self):
+        left = SimpleNamespace(type=game.SDL_KEYDOWN, key=game.SDLK_LEFT)
+        right = SimpleNamespace(type=game.SDL_KEYDOWN, key=game.SDLK_RIGHT)
+
+        _, facing = game.handle_events([left], set(), 'right')
+        self.assertEqual(facing, 'left')
+        _, facing = game.handle_events([right], set(), facing)
+        self.assertEqual(facing, 'right')
 
 
 class MovementPositionTests(unittest.TestCase):
