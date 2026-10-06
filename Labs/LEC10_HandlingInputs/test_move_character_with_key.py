@@ -89,5 +89,11 @@ class MovementPositionTests(unittest.TestCase):
         self.assertEqual((x, y), (600, 974))
 
 
+class AnimationSelectionTests(unittest.TestCase):
+    def test_idle_animation_row_matches_facing(self):
+        self.assertEqual(game.animation_row(False, 'right'), 300)
+        self.assertEqual(game.animation_row(False, 'left'), 200)
+
+
 if __name__ == '__main__':
     unittest.main()
