@@ -48,14 +48,8 @@ def handle_events():
             pressed_keys.discard(event.key)
 
 
-while running:
-    handle_events()
-    if not running:
-        break
-
-    current_time = perf_counter()
-    elapsed = current_time - previous_time
-    previous_time = current_time
+def move_character(elapsed):
+    global x, y
 
     move_x = int(SDLK_RIGHT in pressed_keys) - int(SDLK_LEFT in pressed_keys)
     move_y = int(SDLK_UP in pressed_keys) - int(SDLK_DOWN in pressed_keys)
@@ -69,6 +63,19 @@ while running:
     y += move_y * MOVE_SPEED * elapsed
     x = min(max(x, FRAME_WIDTH / 2), TUK_WIDTH - FRAME_WIDTH / 2)
     y = min(max(y, FRAME_HEIGHT / 2), TUK_HEIGHT - FRAME_HEIGHT / 2)
+    return is_moving
+
+
+while running:
+    handle_events()
+    if not running:
+        break
+
+    current_time = perf_counter()
+    elapsed = current_time - previous_time
+    previous_time = current_time
+
+    is_moving = move_character(elapsed)
 
     current_animation = ('move' if is_moving else 'idle', facing)
     if current_animation != animation_key:
