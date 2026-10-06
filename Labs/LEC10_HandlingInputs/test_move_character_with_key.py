@@ -99,5 +99,19 @@ class AnimationSelectionTests(unittest.TestCase):
         self.assertEqual(game.animation_row(True, 'left'), 0)
 
 
+class AnimationClockTests(unittest.TestCase):
+    def test_frame_advances_after_elapsed_duration(self):
+        frame, frame_elapsed = game.advance_frame(0, 0.0, 0.15)
+
+        self.assertEqual(frame, 1)
+        self.assertAlmostEqual(frame_elapsed, 0.05)
+
+    def test_frame_wraps_and_keeps_remaining_time(self):
+        frame, frame_elapsed = game.advance_frame(7, 0.05, 0.16)
+
+        self.assertEqual(frame, 1)
+        self.assertAlmostEqual(frame_elapsed, 0.01)
+
+
 if __name__ == '__main__':
     unittest.main()
