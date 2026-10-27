@@ -1,35 +1,9 @@
 from pico2d import *
-import random
 
+from grass import Grass
+from boy import Boy
 
-# Game object class here
-
-class Grass:
-    def __init__(self):
-        self.image = load_image('grass.png')
-
-    def draw(self):
-        self.image.draw(400, 30)
-
-    def update(self):
-        pass
-
-
-class Boy:
-    def __init__(self):
-        self.x, self.y = 400, 90
-        self.frame = 0
-        self.face_dir = 1
-        self.image = load_image('animation_sheet.png')
-
-    def update(self):
-        self.frame = (self.frame + 1) % 8
-
-    def draw(self):
-        if self.face_dir == 1:
-            self.image.clip_draw(self.frame * 100, 300, 100, 100, self.x, self.y)
-        else:
-            self.image.clip_draw(self.frame * 100, 200, 100, 100, self.x, self.y)
+pressed_keys = set()
 
 
 def handle_events():
@@ -41,6 +15,12 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_a:
+            boy.start_auto_run()
+        elif event.type == SDL_KEYDOWN and event.key in (SDLK_LEFT, SDLK_RIGHT):
+            pressed_keys.add(event.key)
+        elif event.type == SDL_KEYUP and event.key in (SDLK_LEFT, SDLK_RIGHT):
+            pressed_keys.discard(event.key)
 
 
 def reset_world():
@@ -48,6 +28,7 @@ def reset_world():
     global boy
 
     world = []
+    pressed_keys.clear()
 
     grass = Grass()
     world.append(grass)
@@ -56,11 +37,11 @@ def reset_world():
     world.append(boy)
 
 
-
 def update_world():
+    direction = int(SDLK_RIGHT in pressed_keys) - int(SDLK_LEFT in pressed_keys)
+    boy.set_direction(direction)
     for o in world:
         o.update()
-    pass
 
 
 def render_world():
